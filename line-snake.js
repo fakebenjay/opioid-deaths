@@ -100,7 +100,7 @@ waves.append('div')
   .style('height', '50px')
   .style('background-color', '#194A8A')
 
-d3.csv("data.csv")
+d3.csv("https://assets.law360news.com/1380000/1380553/data.csv")
   .then(function(csv) {
     var heroin = d3.line()
       .x(function(d) {
@@ -176,15 +176,14 @@ d3.csv("data.csv")
       .data(csv)
       .enter()
       .append("circle") // Uses the enter().append() method
-      .attr("class", "dot any") // Assign a class for styling
+      .attr("class", d => `dot any yr-${d.year}`) // Assign a class for styling
       .attr("cy", function(d) {
         return (height - margin.bottom) - yScale(16 - d.anyPer100k);
       })
       .attr("cx", function(d) {
         return xScale(d.year)
       })
-      .attr("r", 5)
-      .style('opacity', 0)
+      .attr("r", 3)
       .style('fill', '#ed6a5a')
       .on('mouseover', (d) => {
         return mouseover(tipText(d))
@@ -196,15 +195,14 @@ d3.csv("data.csv")
       .data(csv)
       .enter()
       .append("circle") // Uses the enter().append() method
-      .attr("class", "dot heroin") // Assign a class for styling
+      .attr("class", d => `dot heroin yr-${d.year}`) // Assign a class for styling
       .attr("cy", function(d) {
         return (height - margin.bottom) - yScale(16 - d.heroinPer100k);
       })
       .attr("cx", function(d) {
         return xScale(d.year)
       })
-      .attr("r", 5)
-      .style('opacity', 0)
+      .attr("r", 3)
       .style('fill', '#654F6F')
       .on('mouseover', (d) => {
         return mouseover(tipText(d))
@@ -216,15 +214,14 @@ d3.csv("data.csv")
       .data(csv)
       .enter()
       .append("circle") // Uses the enter().append() method
-      .attr("class", "dot synthetic") // Assign a class for styling
+      .attr("class", d => `dot synthetic yr-${d.year}`) // Assign a class for styling
       .attr("cy", function(d) {
         return (height - margin.bottom) - yScale(16 - d.syntheticPer100k);
       })
       .attr("cx", function(d) {
         return xScale(d.year)
       })
-      .attr("r", 5)
-      .style('opacity', 0)
+      .attr("r", 3)
       .style('fill', '#194A8A')
       .on('mouseover', (d) => {
         return mouseover(tipText(d))
@@ -236,15 +233,14 @@ d3.csv("data.csv")
       .data(csv)
       .enter()
       .append("circle") // Uses the enter().append() method
-      .attr("class", "dot prescription") // Assign a class for styling
+      .attr("class", d => `dot prescription yr-${d.year}`) // Assign a class for styling
       .attr("cy", function(d) {
         return (height - margin.bottom) - yScale(16 - d.prescriptionPer100k);
       })
       .attr("cx", function(d) {
         return xScale(d.year)
       })
-      .attr("r", 5)
-      .style('opacity', 0)
+      .attr("r", 3)
       .style('fill', '#6BA292')
       .on('mouseover', (d) => {
         return mouseover(tipText(d))

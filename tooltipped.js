@@ -33,7 +33,9 @@ function mouseover(tipText) {
     .style('left', leftTT())
 
   d3.selectAll('.' + event.target.classList[1]).raise()
-  event.target.style.opacity = 1
+
+  d3.select(`.${event.target.classList[1]}.${event.target.classList[2]}`)
+    .attr('r', 6)
 }
 
 function mousemove() {
@@ -45,7 +47,8 @@ function mousemove() {
 }
 
 function mouseout() {
-  event.target.style.opacity = 0
+  d3.select(`.${event.target.classList[1]}.${event.target.classList[2]}`)
+    .attr('r', 3)
   if (window.innerWidth > 767 || document.querySelectorAll('.my-tooltip').length <= 1) {
     d3.select(`.my-tooltip`)
       .html("")
