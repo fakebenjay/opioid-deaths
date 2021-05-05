@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphics template</title>
+  <script type="text/javascript" src="https://www.law360.com/d3.v5.min.js"></script>
+  <script src="tooltippos.js"></script>
+  <script src="offseting.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="law360.css">
+  <!-- <link rel="stylesheet" href="law360.css"> -->
+  </link>
+</head>
+
+<body>
+  <div id="article">
+    <div class="d3-container" id="chart-line">
+      <span class="hed">Opioid Epidemic's Three Waves</span>
+      <p class="dek">A surge of deaths involving prescription narcotics started in the 1990s and has been followed by spikes involving heroin and illicit fentanyl. Overall opioid fatalities have recently risen to new heights.</p>
+
+      <div class="chart"></div>
+      <div class="waves"></div>
+      <div class='my-tooltip'></div>
+      <br />
+      <ol class="wave-descs">
+        <li>Rise in <strong style="color:#6BA292;">prescription opioid</strong> overdose deaths started in 1999</li>
+        <li>Rise in <strong style="color:#654F6F;">heroin</strong> overdose deaths started in 2010</li>
+        <li>Rise in <strong style="color:#194A8A;">synthetic opioid</strong> overdose deaths started in 2013</li>
+      </ol>
+      <br />
+
+      <div class="legend-box">
+        <div class="legend">
+          <div class="any-legend legend-entry">
+            <div class='legend-sq'></div> All Opioids
+          </div>
+          <br />
+          <div class="heroin-legend legend-entry">
+            <div class='legend-sq'></div> Heroin
+          </div>
+          <br />
+          <div class="prescription-legend legend-entry">
+            <div class='legend-sq'></div> Commonly Prescribed Opioids (Natural & Semi-Synthetic Opioids and Methadone)
+          </div>
+          <br />
+          <div class="synthetic-legend legend-entry">
+            <div class='legend-sq'></div> Other Synthetic Opioids (e.g. Tramadol or Fentanyl, prescribed or illicitly manufactured)
+          </div>
+        </div>
+      </div>
+      <span class="bottom"><span class="source">Source: Centers for Disease Control and Prevention</span><span class="gfx-logo"><img src="law360logo.png" /></span></span>
+    </div>
+    <script type="text/javascript" src="line.js" defer></script>
+  </div>
+</body>
+
+</html>

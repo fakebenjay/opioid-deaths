@@ -1,0 +1,205 @@
+#article {
+  max-width: 640px;
+  background-color: white;
+}
+
+body {
+  background-color: white;
+}
+
+#chart-left {
+  float: left;
+  width: 50%;
+}
+
+#chart-right {
+  float: right;
+  width: 50%;
+}
+
+.d3-container {
+  line-height: normal;
+  text-align: left;
+  background-color: #F3F4F3;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.dek {
+  margin: 0 10px 10px 10px;
+  font-size: 12pt;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: normal;
+}
+
+.hed {
+  display: block;
+  padding: 10px 10px 0 10px;
+  font-size: 18pt;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: normal;
+}
+
+.legend-box {
+  text-align: center;
+}
+
+.legend {
+  list-style: none;
+  width: 100%;
+}
+
+.legend-entry {
+  font-size: 10pt;
+  margin: 0 5px;
+  line-height: normal;
+  display: inline;
+}
+
+.legend-sq {
+  display: inline-block;
+  border: 1px solid #fff !important;
+  width: 10pt !important;
+  height: 10pt !important;
+}
+
+.waves {
+  display: flex;
+}
+
+.wave-descs {
+  text-align: center;
+  font-size: 12pt;
+  margin: 0 20px;
+}
+
+.wave {
+  display: flex;
+  color: white;
+  font-size: 12pt;
+  justify-content: center;
+  align-items: center;
+}
+
+.wave span {
+  justify-content: center;
+  align-items: center;
+}
+
+.any-legend .legend-sq {
+  background-color: #ed6a5a;
+}
+
+.heroin-legend .legend-sq {
+  background-color: #654F6F;
+}
+
+.prescription-legend .legend-sq {
+  background-color: #6BA292;
+}
+
+.synthetic-legend .legend-sq {
+  background-color: #194A8A;
+}
+
+.my-tooltip {
+  color: black;
+  overflow: visible;
+  position: absolute;
+  max-width: 250px !important;
+  background-color: #f4f3f4;
+  padding: 10px;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  /* border-radius: 10px; */
+  font-family: Arial, Helvetica, sans-serif;
+  z-index: 500;
+  font-size: 10pt;
+}
+
+.box-shadow-right {
+  box-shadow: 3px 3px #000;
+}
+
+.box-shadow-left {
+  box-shadow: -3px 3px #000;
+}
+
+.orange-text {
+  color: #D5563A;
+}
+
+svg {
+  color: #373739;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#bottom {
+  width: 100%;
+}
+
+.source {
+  line-height: normal;
+  display: inline-block;
+  width: 85%;
+  padding: 5px;
+  font-size: 10pt;
+}
+
+.gfx-logo {
+  display: inline-block;
+  width: 15%;
+  text-align: right;
+  padding: 5px;
+}
+
+.gfx-logo img {
+  width: 100%;
+}
+
+.chart {
+  padding: 0;
+  margin: 0;
+}
+
+.line {
+  fill: none;
+  stroke-width: 3;
+}
+
+/* Style the dots by assigning a fill and stroke */
+.dot {
+  stroke: #fff;
+}
+
+.chart br {
+  display: none
+}
+
+@media screen and (max-width: 767px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .my-tooltip {
+    box-sizing: border-box;
+    box-sizing: -webkit-border-box;
+    max-width: 100%;
+    min-width: 100%;
+    padding: 5px;
+    position: relative !important;
+    overflow: auto;
+    margin-bottom: 0;
+    text-align: center;
+    border-radius: 0px !important;
+  }
+
+  .source {
+    width: 80%;
+  }
+
+  .gfx-logo {
+    width: 20%;
+  }
+}
