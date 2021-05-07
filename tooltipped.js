@@ -1,6 +1,16 @@
-function tipText(values) {
-  var opioidClass = event.target.classList[1]
+var bisectDate = d3.bisector(function(d) {
+  return xScale(d.year) - margin.left;
+}).left
 
+var bisectType = d3.bisector(function(d) {
+  return yScale(d.anyPer100k) - (margin.bottom + margin.top);
+}).left
+
+function closeType(data, x, y) {
+  debugger
+}
+
+function tipText(values, opioidClass) {
   if (opioidClass === 'heroin') {
     var opioidType = 'heroin'
     var opioidColor = '#654F6F'
@@ -22,8 +32,40 @@ function tipText(values) {
   </div>`
 }
 
-function mouseover(tipText) {
-  var html = tipText
+function mouseover(data) {
+  var x0 = d3.mouse(event.target)[0],
+    y0 = d3.mouse(event.target)[1],
+    i = bisectDate(data, x0, 1),
+    j = bisectType(data, y0, 1)
+
+  var d0 = data[i - 1],
+    d1 = i < data.length ? data[i] : data[i - 1]
+
+  var d = (x0 + margin.left) - xScale(d0.year) > xScale(d1.year) - (x0 + margin.left) ? d1 : d0;
+
+  var linePoints = {
+    'synthetic': yScale(d.syntheticPer100k),
+    'any': yScale(d.anyPer100k),
+    'heroin': yScale(d.heroinPer100k),
+    'prescription': yScale(d.prescriptionPer100k)
+  }
+  var lineKeys = Object.keys(linePoints)
+  var closestKey = lineKeys[0]
+
+  for (let i = 1; i < lineKeys.length; i++) {
+    closestKey = Math.abs(y0 - linePoints[closestKey]) < Math.abs(y0 - linePoints[lineKeys[i]]) ? closestKey : lineKeys[i]
+  }
+
+  var html = tipText(d, closestKey)
+
+  d3.selectAll('.dot')
+    .attr('r', 3)
+
+  d3.selectAll(`.${closestKey}`)
+    .raise()
+
+  d3.selectAll(`.dot.${closestKey}.yr-${d.year}`)
+    .attr('r', 8)
 
   d3.select(`.my-tooltip`)
     .html(html)
@@ -31,11 +73,6 @@ function mouseover(tipText) {
     .style("visibility", "visible")
     .style('top', topTT())
     .style('left', leftTT())
-
-  d3.selectAll('.' + event.target.classList[1]).raise()
-
-  d3.select(`.${event.target.classList[1]}.${event.target.classList[2]}`)
-    .attr('r', 6)
 }
 
 function mousemove() {
@@ -47,16 +84,15 @@ function mousemove() {
 }
 
 function mouseout() {
-  d3.select(`.${event.target.classList[1]}.${event.target.classList[2]}`)
+  d3.select(`.my-tooltip`)
+    .html("")
+    .attr('display', 'none')
+    .style("visibility", "hidden")
+    .style("left", null)
+    .style("top", null);
+
+  d3.selectAll(`.dot`)
     .attr('r', 3)
-  if (window.innerWidth > 767 || document.querySelectorAll('.my-tooltip').length <= 1) {
-    d3.select(`.my-tooltip`)
-      .html("")
-      .attr('display', 'none')
-      .style("visibility", "hidden")
-      .style("left", null)
-      .style("top", null);
-  }
 }
 
 function topTT() {
@@ -80,7 +116,7 @@ function topTT() {
 function leftTT() {
   var offsetParent = document.querySelector(`.chart`).offsetParent
   var offX = offsetParent.offsetLeft
-  var cursorX = 5
+  var cursorX = 10
 
   var windowWidth = window.innerWidth
   var cw = document.querySelector(`.my-tooltip`).clientWidth
