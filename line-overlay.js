@@ -260,7 +260,7 @@ d3.csv("https://assets.law360news.com/1380000/1380553/data.csv")
       .on("mouseover mousemove touchstart touchmove", function(d) {
         return mouseover(d)
       })
-      .on("mouseout touchend", mouseout);
+      .on("mouseout", mouseout);
 
     // linesG.raise()
     // d3.selectAll('.dot')
