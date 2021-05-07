@@ -73,6 +73,10 @@ body {
   margin: 0 20px;
 }
 
+.wave-descs li {
+  list-style-position: inside;
+}
+
 .wave {
   display: flex;
   color: white;

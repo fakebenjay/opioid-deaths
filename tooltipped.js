@@ -25,10 +25,12 @@ function tipText(values, opioidClass) {
     var opioidColor = '#ed6a5a'
   }
 
+  var deaths = values[opioidClass + 'Per100k'] == 1 ? 'death' : 'deaths'
+
   return `<div class="tooltip-container">
   <div><strong>${numeral(values[opioidClass]).format('0,0')}</strong> people died of <strong style='color:${opioidColor};'>${opioidType}</strong> overdoses in the United States in <strong>${values.year}</strong>.</div>
   <br/>
-  <div>That's <strong>${values[opioidClass + 'Per100k']}</strong> deaths per 100,000 people.</div>
+  <div>That's <strong>${values[opioidClass + 'Per100k']}</strong> ${deaths} per 100,000 people.</div>
   </div>`
 }
 
