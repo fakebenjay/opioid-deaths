@@ -40,7 +40,7 @@ function mouseover(data) {
     i = bisectDate(data, x0, 1),
     j = bisectType(data, y0, 1)
 
-  var d0 = data[i - 1],
+  var d0 = data[i - 1] !== 'dummy' ? data[i - 1] : data[i],
     d1 = i < data.length ? data[i] : data[i - 1]
 
   var d = (x0 + margin.left) - xScale(d0.year) > xScale(d1.year) - (x0 + margin.left) ? d1 : d0;
